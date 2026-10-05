@@ -1,0 +1,74 @@
+=====================================================================
+ TARGET WEBSITES & APIs FOR AUTOMATION PRACTICE
+ (free, public, stable - base URLs are already in src/test/resources/config.properties)
+=====================================================================
+
+---------------------------------------------------------------------
+ UI AUTOMATION (Selenium WebDriver)
+---------------------------------------------------------------------
+
+1. Sauce Demo (E-Commerce) - PRIMARY
+   URL:       https://www.saucedemo.com/
+   Password:  secret_sauce  (same for all users)
+   Users:     standard_user            - normal user
+              locked_out_user          - login is blocked
+              problem_user             - broken images / buggy UI
+              performance_glitch_user  - slow login
+              error_user               - errors on some actions
+              visual_user              - visual differences
+   Practice:  login (valid / invalid / locked), product sorting,
+              add / remove from cart, cart badge count,
+              end-to-end checkout, form validation, logout
+
+2. The Internet - HerokuApp (Dynamic UI) - SECONDARY
+   URL:       https://the-internet.herokuapp.com/
+   Practice pages:
+              /dynamic_loading/1 and /2   - explicit waits
+              /javascript_alerts          - alert, confirm, prompt
+              /nested_frames              - frame switching
+              /iframe                     - iframe handling
+              /shadowdom                  - shadow DOM
+              /dropdown                   - Select class
+              /checkboxes                 - checkbox state
+              /hovers                     - Actions (mouse hover)
+              /drag_and_drop              - Actions (drag and drop)
+              /windows                    - multiple windows / tabs
+              /upload                     - file upload
+              /login                      - form auth (tomsmith / SuperSecretPassword!)
+              /tables                     - web tables
+              /dynamic_controls           - enable / disable, add / remove elements
+
+---------------------------------------------------------------------
+ API AUTOMATION (REST Assured)
+---------------------------------------------------------------------
+
+3. Restful Booker (CRUD + Token Auth)
+   Base URL:  https://restful-booker.herokuapp.com
+   Docs:      https://restful-booker.herokuapp.com/apidoc/index.html
+   Auth:      admin / password123
+   Endpoints: GET    /ping                 - health check (returns 201)
+              POST   /auth                 - create token
+              GET    /booking              - list booking ids
+              GET    /booking/{id}         - get booking
+              POST   /booking              - create booking
+              PUT    /booking/{id}         - full update   (needs token)
+              PATCH  /booking/{id}         - partial update (needs token)
+              DELETE /booking/{id}         - delete (needs token, returns 201)
+   Notes:     - Send the token as a cookie:  Cookie: token=<token>
+              - Send Accept: application/json exactly (otherwise 418 "I'm a Teapot")
+              - Bad credentials still return 200 with {"reason":"Bad credentials"}
+
+4. ReqRes (Mock REST API)
+   Base URL:  https://reqres.in
+   API key:   header  x-api-key: reqres-free-v1   (requests without it are rejected)
+   Endpoints: GET    /api/users?page=2     - list users
+              GET    /api/users/2          - single user
+              GET    /api/users/23         - user not found (404)
+              POST   /api/users            - create user (201)
+              PUT    /api/users/2          - update user (200)
+              PATCH  /api/users/2          - partial update (200)
+              DELETE /api/users/2          - delete user (204)
+              POST   /api/register         - register (eve.holt@reqres.in / pistol)
+              POST   /api/login            - login (eve.holt@reqres.in / cityslicka)
+              POST   /api/login            - without password returns 400 "Missing password"
+              GET    /api/users?delay=3    - delayed response

@@ -1,0 +1,84 @@
+name: Regression Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  schedule:
+    # Nightly at 02:00 UTC
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: "Cucumber tag expression (e.g. @smoke, @api and @regression)"
+        required: false
+        default: "@regression"
+      browser:
+        description: "Browser for UI tests"
+        required: false
+        default: "chrome"
+        type: choice
+        options: [chrome, firefox, edge]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: ${{ matrix.suite }} tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - suite: API
+            runner: ApiTestRunner
+          - suite: UI
+            runner: UiTestRunner
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Run ${{ matrix.suite }} scenarios
+        # Tag expression: manual input > @smoke on PRs > @regression otherwise.
+        # Runner tags are replaced by cucumber.filter.tags, so re-scope them to the suite here.
+        env:
+          TAGS: ${{ github.event.inputs.tags || (github.event_name == 'pull_request' && '@smoke' || '@regression') }}
+          SUITE_TAG: ${{ matrix.suite == 'API' && '@api' || '@ui' }}
+        run: >
+          mvn -B -ntp clean test
+          -Dtest=${{ matrix.runner }}
+          -Dsurefire.failIfNoSpecifiedTests=false
+          -Dheadless=true
+          -Dbrowser=${{ github.event.inputs.browser || 'chrome' }}
+          "-Dcucumber.filter.tags=${SUITE_TAG} and (${TAGS}) and not @wip"
+
+      - name: Upload Extent report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extent-report-${{ matrix.suite }}
+          path: target/reports/
+          retention-days: 14
+
+      - name: Upload Cucumber reports and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-logs-${{ matrix.suite }}
+          path: |
+            target/cucumber-reports/
+            target/logs/
+            target/surefire-reports/
+          retention-days: 14

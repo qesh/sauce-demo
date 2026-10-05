@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <theme>dark</theme>
+        <encoding>UTF-8</encoding>
+        <documentTitle>QA Automation Report</documentTitle>
+        <reportName>Cucumber BDD - UI and API Regression</reportName>
+        <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+        <timelineEnabled>true</timelineEnabled>
+        <js><![CDATA[]]></js>
+        <css><![CDATA[]]></css>
+    </configuration>
+</extentreports>
