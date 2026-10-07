@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources/features/ui",
         glue = {"com.framework.stepdefinitions", "com.framework.hooks"},
-        tags = "@ui and not @wip",
+        tags = "@ui",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/ui/cucumber.html",

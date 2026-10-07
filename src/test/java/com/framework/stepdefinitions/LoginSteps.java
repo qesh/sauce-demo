@@ -1,5 +1,6 @@
 package com.framework.stepdefinitions;
 
+import com.framework.config.ConfigReader;
 import com.framework.pages.saucedemo.LoginPage;
 import com.framework.pages.saucedemo.ProductPage;
 import io.cucumber.java.en.Given;
@@ -48,6 +49,19 @@ public class LoginSteps {
         Assert.assertTrue(actualErrorMessage.equals(expectedErrorMessage),"Wrong error message shown on the login page");
 
     }
+
+
+
+    @Given("the user is logged in")
+    public void the_user_is_logged_in() {
+        getLoginPage().open();
+        getLoginPage().login(
+                ConfigReader.get("saucedemo.username"),
+                ConfigReader.get("saucedemo.password"));
+        Assert.assertTrue(getProductPage().isTitleDisplayed(), "Login failed, products page not shown");
+    }
+
+
 
 
 }
