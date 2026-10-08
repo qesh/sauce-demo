@@ -13,3 +13,4 @@ Feature: Sauce Demo checkout info
       | lastName  | Snow      |
       | zipCode   | 90210    |
     And I click continue
+    Then I verify page title as "Checkout: Overview"
