@@ -38,8 +38,7 @@ public class ProductPage extends BasePage {
         return isDisplayed(productTitle);
     }
 
-    // Button ids follow the pattern add-to-cart-<slug> / remove-<slug>,
-    // e.g. "Sauce Labs Backpack" -> add-to-cart-sauce-labs-backpack
+
     public void addToCart(String productName) {
         click(driver.findElement(By.id("add-to-cart-" + toSlug(productName))));
     }

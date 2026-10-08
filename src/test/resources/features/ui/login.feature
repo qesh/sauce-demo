@@ -12,7 +12,7 @@ Feature: Sauce Demo login
       | username      | password     |
       | standard_user | secret_sauce |
 
-  @negative @regression
+  @regression
   Scenario Outline: Unsuccessful user authentication
     When the user logs in with username "<username>" and password "<password>"
     Then the error message "<error_message>" should be displayed

@@ -5,6 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources/features/ui",
         glue = {"com.framework.stepdefinitions", "com.framework.hooks"},
+        dryRun = false,
         tags = "@ui",
         plugin = {
                 "pretty",
