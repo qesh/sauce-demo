@@ -1,20 +1,20 @@
 package com.framework.stepdefinitions;
 
 import com.framework.drivers.DriverManager;
-import com.framework.pages.saucedemo.CheckOutCompletePage;
+import com.framework.pages.saucedemo.CheckoutCompletePage;
 import io.cucumber.java.en.Then;
 import org.testng.Assert;
 
 
 public class CheckoutCompleteSteps {
 
-    private CheckOutCompletePage checkOutCompletePage;
+    private CheckoutCompletePage checkoutCompletePage;
 
-    private CheckOutCompletePage getCheckOutCompletePage(){
-            if(checkOutCompletePage == null){
-                checkOutCompletePage = new CheckOutCompletePage( DriverManager.getDriver());
+    private CheckoutCompletePage getCheckoutCompletePage(){
+            if(checkoutCompletePage == null){
+                checkoutCompletePage = new CheckoutCompletePage( DriverManager.getDriver());
             }
-            return checkOutCompletePage;
+            return checkoutCompletePage;
 
     }
 
@@ -22,7 +22,7 @@ public class CheckoutCompleteSteps {
     @Then("I see the confirmation message {string}")
     public void i_see_the_confirmation_message(String message) {
 
-        Assert.assertEquals(getCheckOutCompletePage().getCompleteHeaderText(), message);
+        Assert.assertEquals(getCheckoutCompletePage().getCompleteHeaderText(), message);
 
     }
 

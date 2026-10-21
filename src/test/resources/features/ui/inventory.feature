@@ -1,10 +1,10 @@
 
-@ui
+@ui @regression.
 Feature: Sauce Demo Product Page
 
   Background:
     Given the user is logged in
-  @smoke @regression
+  @smoke
   Scenario: Adding a single item shows a badge of 1
     When I add one item to the cart
     Then the cart badge should show 1

@@ -1,14 +1,13 @@
 package com.framework.pages.saucedemo;
-
 import com.framework.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CheckOutInfoPage extends BasePage {
+public class CheckoutInfoPage extends BasePage {
 
 
-    public CheckOutInfoPage(WebDriver driver) {
+    public CheckoutInfoPage(WebDriver driver) {
         super(driver);
     }
 

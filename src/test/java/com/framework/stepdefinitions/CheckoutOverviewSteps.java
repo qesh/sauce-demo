@@ -1,19 +1,17 @@
 package com.framework.stepdefinitions;
 
 import com.framework.drivers.DriverManager;
-import com.framework.pages.saucedemo.CheckoutOverview;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import com.framework.pages.saucedemo.CheckoutOverviewPage;
+import io.cucumber.java.en.*;
 import org.testng.Assert;
 
 public class CheckoutOverviewSteps {
 
-    private CheckoutOverview checkoutOverview;
+    private CheckoutOverviewPage checkoutOverview;
 
-    private CheckoutOverview getCheckoutOverview(){
+    private CheckoutOverviewPage getCheckoutOverview(){
         if(checkoutOverview==null){
-            checkoutOverview = new CheckoutOverview(DriverManager.getDriver());
+            checkoutOverview = new CheckoutOverviewPage(DriverManager.getDriver());
         }
         return checkoutOverview;
     }

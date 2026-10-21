@@ -1,27 +1,26 @@
 package com.framework.stepdefinitions;
 
 import com.framework.drivers.DriverManager;
-import com.framework.pages.saucedemo.CheckOutInfoPage;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import com.framework.pages.saucedemo.CheckoutInfoPage;
+import io.cucumber.java.en.*;
 import org.testng.Assert;
 import java.util.Map;
 
 public class CheckoutInfoSteps {
 
-    private CheckOutInfoPage checkOutInfoPage;
+    private CheckoutInfoPage checkoutInfoPage;
 
-    private CheckOutInfoPage getCheckOutInfoPage() {
-        if(checkOutInfoPage==null) {
-            checkOutInfoPage = new CheckOutInfoPage(DriverManager.getDriver());
+    private CheckoutInfoPage getCheckoutInfoPage() {
+        if(checkoutInfoPage ==null) {
+            checkoutInfoPage = new CheckoutInfoPage(DriverManager.getDriver());
         }
-        return checkOutInfoPage;
+        return checkoutInfoPage;
     }
 
     @Then("I verify page title as {string}")
     public void i_verify_page_title_as(String title) {
 
-        Assert.assertEquals(getCheckOutInfoPage().getTitleText(), title);
+        Assert.assertEquals(getCheckoutInfoPage().getTitleText(), title);
 
     }
 
@@ -32,9 +31,9 @@ public class CheckoutInfoSteps {
         String lastname = data.get("lastName");
         String zipcode = data.get("zipCode");
 
-        getCheckOutInfoPage().fillFirstName(name);
-        getCheckOutInfoPage().fillLastName(lastname);
-        getCheckOutInfoPage().fillPostalCode(zipcode);
+        getCheckoutInfoPage().fillFirstName(name);
+        getCheckoutInfoPage().fillLastName(lastname);
+        getCheckoutInfoPage().fillPostalCode(zipcode);
 
 
     }
@@ -42,7 +41,7 @@ public class CheckoutInfoSteps {
     @When("I click continue")
     public void i_click_continue() {
 
-        getCheckOutInfoPage().continueButton();
+        getCheckoutInfoPage().continueButton();
 
         System.out.println("Checkout Info page is completed and clicked Continue Button =============================>> CONTINUE");
 

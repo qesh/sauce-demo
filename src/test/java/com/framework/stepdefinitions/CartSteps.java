@@ -1,12 +1,9 @@
 package com.framework.stepdefinitions;
 
 import com.framework.drivers.DriverManager;
-import com.framework.pages.BasePage;
 import com.framework.pages.saucedemo.CartPage;
 import com.framework.pages.saucedemo.ProductPage;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
+import io.cucumber.java.en.*;
 import org.testng.Assert;
 
 public class CartSteps {

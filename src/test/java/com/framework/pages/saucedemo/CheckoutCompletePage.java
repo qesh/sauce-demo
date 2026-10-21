@@ -1,12 +1,11 @@
 package com.framework.pages.saucedemo;
-
 import com.framework.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CheckOutCompletePage extends BasePage {
-    public CheckOutCompletePage(WebDriver driver) {
+public class CheckoutCompletePage extends BasePage {
+    public CheckoutCompletePage(WebDriver driver) {
         super(driver);
     }
 

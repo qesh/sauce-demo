@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CheckoutOverview extends BasePage {
-    public CheckoutOverview(WebDriver driver) {
+public class CheckoutOverviewPage extends BasePage {
+    public CheckoutOverviewPage(WebDriver driver) {
         super(driver);
     }
 
