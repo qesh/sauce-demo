@@ -2,7 +2,9 @@ package com.framework.stepdefinitions;
 
 import com.framework.drivers.DriverManager;
 import com.framework.pages.saucedemo.CheckoutOverview;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.testng.Assert;
 
 public class CheckoutOverviewSteps {
@@ -32,6 +34,11 @@ public class CheckoutOverviewSteps {
 
         Assert.assertEquals(actualTotal, expectedTotal,  0.001);
 
+    }
+
+    @When("I click finish")
+    public void i_click_finish() {
+        getCheckoutOverview().clickFinish();
     }
 
 
