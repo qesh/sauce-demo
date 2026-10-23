@@ -1,0 +1,13 @@
+services:
+  jenkins:
+    build: .
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    shm_size: "2gb"   # Chrome crashes with the default 64MB /dev/shm
+
+volumes:
+  jenkins_home:
