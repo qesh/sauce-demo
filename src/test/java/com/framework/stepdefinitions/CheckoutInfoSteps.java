@@ -47,6 +47,18 @@ public class CheckoutInfoSteps {
 
     }
 
+    @When("I fill the checkout form with {string}, {string} and {string}")
+    public void i_fill_checkout_form_with(String name, String lastname, String zipcode) {
+        getCheckoutInfoPage().fillFirstName(name);
+        getCheckoutInfoPage().fillLastName(lastname);
+        getCheckoutInfoPage().fillPostalCode(zipcode);
+    }
+
+    @Then("I see the checkout error {string}")
+    public void i_see_the_checkout_error(String errorMessage) {
+        Assert.assertEquals(getCheckoutInfoPage().getErrorText(), errorMessage);
+    }
+
 
 
 }

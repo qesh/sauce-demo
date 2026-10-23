@@ -26,6 +26,9 @@ public class CheckoutInfoPage extends BasePage {
     @FindBy(id = "continue")
     private WebElement continueButton;
 
+    @FindBy(css = "[data-test='error']")
+    private WebElement errorMessage;
+
     public String getTitleText() {
         return textOf(title);
     }
@@ -43,6 +46,10 @@ public class CheckoutInfoPage extends BasePage {
 
     public void continueButton() {
         click(continueButton);
+    }
+
+    public String getErrorText() {
+        return textOf(errorMessage);
     }
 
 

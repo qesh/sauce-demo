@@ -1,5 +1,5 @@
 
-@ui @regression.
+@ui @regression
 Feature: Sauce Demo Product Page
 
   Background:
