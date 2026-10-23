@@ -8,6 +8,8 @@ services:
     volumes:
       - jenkins_home:/var/jenkins_home
     shm_size: "2gb"   # Chrome crashes with the default 64MB /dev/shm
+    environment:
+      - JAVA_OPTS=-Dhudson.model.DirectoryBrowserSupport.CSP=
 
 volumes:
   jenkins_home:
